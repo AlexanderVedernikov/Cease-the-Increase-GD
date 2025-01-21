@@ -302,8 +302,22 @@ position = Vector2(1958, 452)
 [node name="Level1BackgroundEffects" parent="." instance=ExtResource("8_oiqg5")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("player")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -448.0
+offset_right = 900.0
+offset_bottom = 452.0
+grow_vertical = 0
 scale = Vector2(0.5, 0.5)
-transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+value = 100.0
+texture_under = ExtResource("7_qrqmd")
+texture_progress = ExtResource("8_xgjxl")
+texture_progress_offset = Vector2(0, -10)
+script = ExtResource("7_bcgui")
+player = NodePath("../../Player")
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -311,18 +325,3 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control" node_paths=PackedStringArray("player")]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -900.0
-offset_right = 900.0
-grow_vertical = 0
-value = 100.0
-texture_under = ExtResource("7_qrqmd")
-texture_progress = ExtResource("8_xgjxl")
-texture_progress_offset = Vector2(0, -10)
-script = ExtResource("7_bcgui")
-player = NodePath("../../../Player")
