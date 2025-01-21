@@ -1,0 +1,130 @@
+[gd_scene load_steps=19 format=3 uid="uid://didckde14ylej"]
+
+[ext_resource type="Texture2D" uid="uid://ci05yp3o2gurj" path="res://graphics/Level1BackgroundEffectTileSet.png" id="1_ph25u"]
+[ext_resource type="Script" path="res://scenes/levels/Level1BackgroundEffects.gd" id="2_3j2ee"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8jv4"]
+atlas = ExtResource("1_ph25u")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbf36"]
+atlas = ExtResource("1_ph25u")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15ttj"]
+atlas = ExtResource("1_ph25u")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dktoe"]
+atlas = ExtResource("1_ph25u")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlxk2"]
+atlas = ExtResource("1_ph25u")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0d1p"]
+atlas = ExtResource("1_ph25u")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etyvg"]
+atlas = ExtResource("1_ph25u")
+region = Rect2(480, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kaig6"]
+atlas = ExtResource("1_ph25u")
+region = Rect2(560, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moexc"]
+atlas = ExtResource("1_ph25u")
+region = Rect2(640, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym0io"]
+atlas = ExtResource("1_ph25u")
+region = Rect2(720, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oxa1"]
+atlas = ExtResource("1_ph25u")
+region = Rect2(800, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkpy2"]
+atlas = ExtResource("1_ph25u")
+region = Rect2(880, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5stej"]
+atlas = ExtResource("1_ph25u")
+region = Rect2(960, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yoxy"]
+atlas = ExtResource("1_ph25u")
+region = Rect2(1040, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svbfb"]
+atlas = ExtResource("1_ph25u")
+region = Rect2(1120, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ldea1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8jv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbf36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15ttj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dktoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlxk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0d1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etyvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kaig6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moexc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ym0io")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oxa1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkpy2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5stej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yoxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svbfb")
+}],
+"loop": true,
+"name": &"Level1BackgroundEffectsAnimation",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Level1BackgroundEffects" type="AnimatedSprite2D"]
+visible = false
+position = Vector2(-45, 90)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ldea1")
+animation = &"Level1BackgroundEffectsAnimation"
+script = ExtResource("2_3j2ee")

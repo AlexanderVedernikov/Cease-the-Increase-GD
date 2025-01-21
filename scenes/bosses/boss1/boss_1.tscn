@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://br72skjxwc13g"]
+
+[ext_resource type="Texture2D" uid="uid://gj6bag7vamyx" path="res://graphics/Power.png" id="1_7gl4e"]
+[ext_resource type="Script" path="res://scenes/bosses/boss1/boss_1.gd" id="1_han5x"]
+[ext_resource type="PackedScene" uid="uid://dcu886itxlssc" path="res://scenes/levels/big_rock.tscn" id="3_76346"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6dlwi"]
+radius = 63.2731
+height = 383.536
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2qle3"]
+radius = 47.4734
+height = 363.206
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gf7a7"]
+radius = 38.0132
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qwjst"]
+radius = 51.0
+height = 102.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_47go0"]
+radius = 19.9269
+height = 154.553
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e7rwa"]
+radius = 21.1543
+height = 163.292
+
+[node name="Boss1" type="CharacterBody2D"]
+position = Vector2(453, 173)
+scale = Vector2(-1, 1)
+script = ExtResource("1_han5x")
+
+[node name="Boss1Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_7gl4e")
+
+[node name="Boss1RightArmHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(106, 3)
+rotation = -0.443314
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_6dlwi")
+
+[node name="Boss1LeftArmHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-109, -17)
+rotation = 0.202458
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_2qle3")
+
+[node name="Boss1HeadHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-7, -144)
+shape = SubResource("CircleShape2D_gf7a7")
+
+[node name="Boss1BodyHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-12, -44)
+shape = SubResource("CapsuleShape2D_qwjst")
+
+[node name="Boss1LeftLegHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-59, 89)
+rotation = 0.174533
+shape = SubResource("CapsuleShape2D_47go0")
+
+[node name="Boss1RightLegHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(48, 90)
+rotation = -0.296706
+shape = SubResource("CapsuleShape2D_e7rwa")
+
+[node name="BigRock" parent="." instance=ExtResource("3_76346")]
+visible = false
+position = Vector2(-7, -276)

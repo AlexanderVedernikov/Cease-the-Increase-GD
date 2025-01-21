@@ -1,17 +1,117 @@
-[gd_scene load_steps=3 format=3 uid="uid://be0d04wub54bl"]
+[gd_scene load_steps=15 format=3 uid="uid://be0d04wub54bl"]
 
 [ext_resource type="Texture2D" uid="uid://doar4cvoeaacl" path="res://graphics/Swordsman.png" id="1_0wldy"]
+[ext_resource type="Texture2D" uid="uid://b8x8akk8rqcby" path="res://graphics/Swordsman_Crouch.png" id="2_fywh5"]
+[ext_resource type="Texture2D" uid="uid://cugjt07tbjtvw" path="res://graphics/Swordsman_Idle-Sheet.png" id="3_g88tc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_miwqa"]
-size = Vector2(48, 124)
+size = Vector2(60, 155)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tbdk"]
+size = Vector2(70, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7vi6"]
+atlas = ExtResource("3_g88tc")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwnqw"]
+atlas = ExtResource("3_g88tc")
+region = Rect2(1280, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qu5v"]
+atlas = ExtResource("3_g88tc")
+region = Rect2(1600, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4h1g"]
+atlas = ExtResource("3_g88tc")
+region = Rect2(1920, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oco2"]
+atlas = ExtResource("3_g88tc")
+region = Rect2(2240, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhj5e"]
+atlas = ExtResource("3_g88tc")
+region = Rect2(2560, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vobei"]
+atlas = ExtResource("3_g88tc")
+region = Rect2(2880, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8872i"]
+atlas = ExtResource("3_g88tc")
+region = Rect2(3200, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7tfmo"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 6.5,
+"texture": SubResource("AtlasTexture_m7vi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwnqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qu5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4h1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oco2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhj5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vobei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8872i")
+}],
+"loop": true,
+"name": &"idle-animation",
+"speed": 10.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(350, 158)
+collision_layer = 2
+collision_mask = 7
 
-[node name="PlayerImage" type="Sprite2D" parent="."]
-position = Vector2(8, -2)
-scale = Vector2(0.4, 0.4)
+[node name="CharacterSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_0wldy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CrouchingSprite" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fywh5")
+
+[node name="CharacterSpriteHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-10, 2)
 shape = SubResource("RectangleShape2D_miwqa")
+
+[node name="CrouchingSpriteHitbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-10, 22)
+shape = SubResource("RectangleShape2D_4tbdk")
+disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.1, 1.1)
+limit_left = -440
+limit_top = -440
+limit_right = 4080
+limit_bottom = 1280
+
+[node name="IdleAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_7tfmo")
+animation = &"idle-animation"
