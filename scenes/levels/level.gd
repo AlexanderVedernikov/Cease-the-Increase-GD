@@ -18,4 +18,3 @@ func _process(delta):
 		effect_timer = 0
 	
 	
-

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
-var run_speed = 350
+var run_speed = 450
 var jump_speed = -1000
 var long_jump_speed = -15
 var gravity = 2500
@@ -10,6 +10,7 @@ var direction = 1
 var is_crouching = false
 var health = 100
 var idle_timer = 0
+var is_invincible = false
 
 signal health_changed
 
@@ -66,11 +67,20 @@ func get_input():
 		character_sprite.show()
 		is_crouching = false
 
-func takeDamage():
-	health -= 5
-	health_changed.emit()
+func takeDamage(damage):
+	if not is_invincible:
+		is_invincible = true
+		modulate = (Color(1,1,1,0.8))
+		health -= damage
+		health_changed.emit()
+		var timer = Timer.new()
+		add_child(timer)
+		timer.start(2)
+		timer.connect("timeout", removeInvincibility)
 	
-	
+func removeInvincibility():
+	is_invincible = false
+	modulate = (Color(1,1,1,1))
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -104,7 +114,13 @@ func _physics_process(delta):
 	get_input()
 	
 	move_and_slide()
+	 
+	var collision = get_last_slide_collision()
+	if collision:
+		collision = collision.get_collider()
+		if collision.is_in_group("DamagingObjects"):
+			takeDamage(15)
 	Globals.player_position = position
-	print(get_last_slide_collision())
+
 	#if (get_last_slide_collision() == ""):
 		

@@ -23,6 +23,10 @@ Globals="*res://scripts/globals.gd"
 
 project/assembly_name="CeaseTheIncreaseGD"
 
+[global_group]
+
+DamagingObjects=""
+
 [input]
 
 left={
