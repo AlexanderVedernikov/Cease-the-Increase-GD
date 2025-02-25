@@ -70,7 +70,7 @@ func get_input():
 func takeDamage(damage):
 	if not is_invincible:
 		is_invincible = true
-		modulate = (Color(1,1,1,0.8))
+		modulate = (Color(1,1,1,0.6))
 		health -= damage
 		health_changed.emit()
 		var timer = Timer.new()
