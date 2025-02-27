@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://v5x32qjql7ft"]
+
+[ext_resource type="Script" path="res://choice_button.gd" id="1_mx176"]
+
+[node name="ChoiceButton" type="Button"]
+text = "Ooga Booga"
+script = ExtResource("1_mx176")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

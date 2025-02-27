@@ -3,8 +3,11 @@ extends Node2D
 @onready var pause_menu = $PauseCanvasLayer/PauseMenu
 var paused = false
 
+@export var dialogue_json: JSON
+@onready var state = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	($EzDialogue as EzDialogue).start_dialogue(dialogue_json, state)
 	pass # Replace with function body.
 
 
@@ -32,3 +35,9 @@ func _on_resume_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+
+func _on_ez_dialogue_dialogue_generated(response: DialogueResponse):
+	$DialogueLayer/DialogueBox.add_text(response.text)
+	for choice in response.choices:
+		$DialogueLayer/DialogueBox.add_choice(choice)

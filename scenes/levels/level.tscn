@@ -1,9 +1,10 @@
-[gd_scene load_steps=39 format=4 uid="uid://dmqruxqy4wphp"]
+[gd_scene load_steps=43 format=4 uid="uid://dmqruxqy4wphp"]
 
 [ext_resource type="PackedScene" uid="uid://be0d04wub54bl" path="res://scenes/player/player.tscn" id="1_7di2c"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_bjmmn"]
 [ext_resource type="Script" path="res://scenes/levels/main.gd" id="1_qqncy"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="2_f0x8y"]
+[ext_resource type="JSON" path="res://dialogue.json" id="2_tvdd4"]
 [ext_resource type="Texture2D" uid="uid://baoc7jyj26led" path="res://graphics/Level1WallsTileSet.png" id="3_7cmab"]
 [ext_resource type="Texture2D" uid="uid://cqexxso14ww0h" path="res://graphics/Level1BackgroundTileSet.png" id="4_o6evf"]
 [ext_resource type="Texture2D" uid="uid://g2rpx5yn0oat" path="res://graphics/FloatingPlatform.png" id="5_11gvr"]
@@ -13,7 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://didckde14ylej" path="res://scenes/levels/level_1_background_effects.tscn" id="8_oiqg5"]
 [ext_resource type="Texture2D" uid="uid://boq7weq2wduhi" path="res://graphics/TempUI_Bar.png" id="8_xgjxl"]
 [ext_resource type="AudioStream" uid="uid://ckl3fqpndf4vu" path="res://sounds/BackgroudMusic/Stepping_Stones_4-30-24(1).mp3" id="12_bt3c1"]
+[ext_resource type="Script" path="res://scenes/levels/control.gd" id="14_2tqpt"]
+[ext_resource type="Script" path="res://addons/ez_dialogue/ez_dialogue_node.gd" id="14_swb4b"]
 [ext_resource type="Shader" path="res://scenes/levels/pauseblur.gdshader" id="14_tkol0"]
+[ext_resource type="Script" path="res://scenes/levels/label.gd" id="15_tbbyh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6p76r"]
 resource_name = "Level1Walls"
@@ -264,6 +268,7 @@ shader_parameter/amount = 3.0
 [node name="Main" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_qqncy")
+dialogue_json = ExtResource("2_tvdd4")
 
 [node name="Level" type="Node2D" parent="."]
 process_mode = 1
@@ -346,6 +351,35 @@ scale = Vector2(1, -1)
 process_mode = 1
 script = ExtResource("2_f0x8y")
 
+[node name="EzDialogue" type="Node" parent="."]
+script = ExtResource("14_swb4b")
+
+[node name="DialogueLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" type="Control" parent="DialogueLayer"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -368.5
+offset_top = -268.0
+offset_right = 368.5
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("14_2tqpt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueLayer/DialogueBox"]
+layout_mode = 0
+offset_right = 94.0
+offset_bottom = 40.0
+alignment = 2
+
+[node name="Text" type="Label" parent="DialogueLayer/DialogueBox/VBoxContainer"]
+layout_mode = 2
+
 [node name="PauseCanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" type="Control" parent="PauseCanvasLayer"]
@@ -392,5 +426,20 @@ text = "Resume"
 layout_mode = 2
 text = "Quit"
 
+[node name="FPSCounter" type="Button" parent="PauseCanvasLayer/PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "FPS Counter"
+
+[node name="FPSCounterLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="FPSCounterLayer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "0"
+script = ExtResource("15_tbbyh")
+
+[connection signal="dialogue_generated" from="EzDialogue" to="." method="_on_ez_dialogue_dialogue_generated"]
 [connection signal="pressed" from="PauseCanvasLayer/PauseMenu/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseCanvasLayer/PauseMenu/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PauseCanvasLayer/PauseMenu/MarginContainer/VBoxContainer/FPSCounter" to="FPSCounterLayer/Label" method="_on_fps_counter_pressed"]

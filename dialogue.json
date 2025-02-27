@@ -1,0 +1,72 @@
+[
+	{
+		"commands_raw": "A new face doth graze this great tower? \nCurious it be, thou of seemingly desperate nature. \nI see thine clothing be of low quality, could be it riches thou seek? \nAnswer mine question, as I be The First of Power.\nWhat doth thou wish to gain from thine expedition?\n\n?> You were right, I’m here for the riches! -> No-Run-First-Choice-One\n?> I seek a purpose -> No-Run-First-Choice-Two\n?> HOLY SMOKES A TALKING PILE OF ROCKS! -> No-Run-First-Choice-Three\n?> What’s it to ya, stone-face? -> No-Run-First-Choice-Four\n?> I don’t know… maybe I’ll get something out of it… -> No-Run-First-Choice-Five\n",
+		"gnode_name": "start",
+		"id": 1,
+		"name": "start",
+		"position": [
+			60,
+			100
+		]
+	},
+	{
+		"commands_raw": "Hmm… \nThine simple greed may be thine undoing if thou aren’t careful… \nWe shall see now if thine case truly be desperate enough to claim what thou are here for.\nGood luck…",
+		"gnode_name": "no-run-first-choice-one",
+		"id": 2,
+		"name": "No-Run-First-Choice-One",
+		"position": [
+			540,
+			-40
+		]
+	},
+	{
+		"commands_raw": "A purpose..? \nVery interesting… \nThou seem to be different from many others. \nMine fighting spirit is enlightened! S\nhow me what thou truly seek, and show what is rightfully thine belonging. \nGood luck…",
+		"gnode_name": "no-run-first-choice-two",
+		"id": 3,
+		"name": "No-Run-First-Choice-Two",
+		"position": [
+			540,
+			40
+		]
+	},
+	{
+		"commands_raw": "Excuse me? \nMake no mistake, challenger, I be more than a mere pile. \nThou shalt see mine true aptitude in combat! Good luck…",
+		"gnode_name": "no-run-first-choice-three",
+		"id": 4,
+		"name": "No-Run-First-Choice-Three",
+		"position": [
+			540,
+			120
+		]
+	},
+	{
+		"commands_raw": "I beg thine pardon?! \nThou will speak in a respectful tone when regarding the first guardian of this divine creation! \nThou will surely meet an early grave, good luck…",
+		"gnode_name": "no-run-first-choice-four",
+		"id": 5,
+		"name": "No-Run-First-Choice-Four",
+		"position": [
+			540,
+			200
+		]
+	},
+	{
+		"commands_raw": "Hmm… \nI sense thine dreary tone… \nWell don’t let thine guard down, thou will need to make sacrifices to reach this tower’s divine creator. \nShow me what thou can do, and I shall judge if thou can truly meet thine goal. \nGood luck.",
+		"gnode_name": "no-run-first-choice-five",
+		"id": 6,
+		"name": "No-Run-First-Choice-Five",
+		"position": [
+			540,
+			280
+		]
+	},
+	{
+		"commands_raw": "",
+		"gnode_name": "diag node",
+		"id": 7,
+		"name": "Diag Node",
+		"position": [
+			800,
+			120
+		]
+	}
+]

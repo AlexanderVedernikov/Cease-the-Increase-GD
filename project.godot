@@ -23,6 +23,10 @@ Globals="*res://scripts/globals.gd"
 
 project/assembly_name="CeaseTheIncreaseGD"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ez_dialogue/plugin.cfg")
+
 [global_group]
 
 DamagingObjects=""
