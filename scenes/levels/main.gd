@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var pause_menu = $PauseCanvasLayer/PauseMenu
-var paused = false
+
 
 @export var dialogue_json: JSON
 @onready var state = {}
@@ -18,8 +18,8 @@ func _process(delta):
 		
 		
 func pauseMenu():
-	paused = not paused
-	if paused:
+	Globals.paused = not Globals.paused
+	if Globals.paused:
 		pause_menu.show()
 		get_tree().paused = true
 	else:
@@ -38,6 +38,9 @@ func _on_quit_pressed():
 
 
 func _on_ez_dialogue_dialogue_generated(response: DialogueResponse):
+	$DialogueLayer/DialogueBox.clear_dialogue_box()
+	
 	$DialogueLayer/DialogueBox.add_text(response.text)
+	
 	for choice in response.choices:
 		$DialogueLayer/DialogueBox.add_choice(choice)
